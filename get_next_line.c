@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:44 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/11/28 16:12:33 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/11/29 21:13:38 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 char    *get_next_line(int fd)
 {
-    static char *line;
-    char    buffer[BUFFER_SIZE];
-    ssize_t bytes_read;
+    char *buffer; //essa variavel nao pode ser a estatica pq eu inicializo ela aq em cima
+                        //tem q guardar o resto la embaixo no setnewline e so ir copiando o valor
+    char    *line;
 
-    bytes_read = read(fd, buffer, BUFFER_SIZE);
-    line = (char *)malloc(sizeof(char) * (bytes_read + 1));
-    ft_strlcpy(line, buffer, bytes_read + 1);
+    buffer = ft_calloc((BUFFER_SIZE + 1), sizeof(char));
+
+    buffer = read_file(fd, buffer);
+    line = set_line(buffer);
+    buffer = set_new_line(buffer);
     return (line);
 }
 
