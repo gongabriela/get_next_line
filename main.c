@@ -14,9 +14,9 @@ int main(void)
     str = get_next_line(fd); 
     while (str != NULL)
     {
-        str = get_next_line(fd); 
         printf("%s", str);
+        free(str);
+        str = get_next_line(fd); 
     }
-    free(str);
     close (fd);
 }

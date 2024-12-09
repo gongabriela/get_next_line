@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:44 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/02 17:21:32 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/12/07 19:06:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ char *get_next_line(int fd)
         return (NULL);
     buffer = read_file(fd, buffer);
     if (buffer == NULL)
-        return (NULL);
+        return (free(newline), NULL);
     line = set_line(buffer);
     newline = set_new_line(buffer);
     free(buffer);
     return (line);
 }
+
+//quando for a ultima chamada, e preciso dar free na newline. retornar (null) apenas quando nao ha nada para ler no arquivo (ta aparecendo quando le a ultima linha) 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:58 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/02 17:08:13 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/12/07 17:14:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,16 @@ char    *read_file(int fd, char *buffer)
         bytes_read = read(fd, temp, BUFFER_SIZE);
         if (bytes_read == -1 || bytes_read == 0)
             return (free(temp), NULL);
+			//break ; aparece null mesm com isso
         buffer = ft_strjoin(buffer, temp);
         if (ft_strchr(temp, '\n'))
             break ;
     }
 	free(temp);
+	/*if (bytes_read == -1)
+		return (NULL);
+	else if (bytes_read == 0)
+		return (0);*/ //mesmo com isso aparece (null) no fim. talves eu precise fazer alguma verificacao na principal
     return (buffer);
 }
 
@@ -100,7 +105,7 @@ char *ft_strjoin(char *buffer, char *temp)
 	conc[i] = '\0';
 	return (conc);
 }
-
+ 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t			i;
