@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:19:15 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/04 11:46:23 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/09 16:06:14 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@
 
 char    *get_next_line(int fd);
 char    *read_file(int fd, char *buffer);
-char    *set_line(char  *buffer);
-char    *set_new_line(char  *buffer);
+char    *set_line(char  *buffer, char **newline);
 char    *ft_strjoin(char    *buffer, char   *temp);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(char *s, int c);

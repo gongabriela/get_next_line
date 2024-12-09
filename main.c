@@ -11,12 +11,14 @@ int main(void)
     char    *str;
 
     fd = open("image.txt", O_RDONLY);
-    str = get_next_line(fd); 
+    str = get_next_line(fd);
     while (str != NULL)
     {
         printf("%s", str);
         free(str);
-        str = get_next_line(fd); 
+        str = get_next_line(fd);
     }
+    free(str);
     close (fd);
+    return (0);
 }

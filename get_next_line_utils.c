@@ -3,84 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:58 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/07 17:14:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/09 16:08:34 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-char    *read_file(int fd, char *buffer)
-{
-    char    *temp;
-    int bytes_read;
-
-    bytes_read = 1;
-    if (ft_strchr(buffer, '\n'))
-        return (buffer);
-    while (bytes_read > 0)
-    {
-        temp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-        bytes_read = read(fd, temp, BUFFER_SIZE);
-        if (bytes_read == -1 || bytes_read == 0)
-            return (free(temp), NULL);
-			//break ; aparece null mesm com isso
-        buffer = ft_strjoin(buffer, temp);
-        if (ft_strchr(temp, '\n'))
-            break ;
-    }
-	free(temp);
-	/*if (bytes_read == -1)
-		return (NULL);
-	else if (bytes_read == 0)
-		return (0);*/ //mesmo com isso aparece (null) no fim. talves eu precise fazer alguma verificacao na principal
-    return (buffer);
-}
-
-char *set_line(char *buffer) // tentar juntar essa funcao com a newline
-{
-	char	*line;
-	int i;
-	int	j;
-	int k;
-	i = 0;
-	while (buffer[i] != '\n' && buffer[i] != '\0')
-		i++;
-	line = ft_calloc(i + 2, sizeof(char));
-	if (line == NULL)
-		return (NULL);
-	j = 0;
-	k = 0;
-	while (i-- >= 0)
-		line[j++] = buffer[k++];
-	return (line);
-}
-
-char *set_new_line(char *buffer)
-{
-	int i;
-	int j;
-	int k;
-	char *temp;
-
-	i = 0;
-	j = 0;
-	while (buffer[j] != '\0')
-		j++;
-	if (ft_strchr(buffer, '\n'))
-		while (buffer[i] != '\n')
-			i++;
-	temp = ft_calloc(j - i, sizeof(char));
-	if (temp == NULL)
-		return (NULL);
-	k = 0;
-	i++;
-	while (i <= j)
-		temp[k++] = buffer[i++];
-	return (temp);
-}
 
 char *ft_strjoin(char *buffer, char *temp)
 {
@@ -117,7 +47,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	while (i < nmemb * size)
 	{
-		temp[i] = 0;
+		temp[i] = 0; //0 e interpretado como \0 em strings
 		i++;
 	}
 	return (temp);
