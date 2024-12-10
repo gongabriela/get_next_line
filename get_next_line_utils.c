@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:58 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/09 16:08:34 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:17:58 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,9 @@
 char *ft_strjoin(char *buffer, char *temp)
 {
 	char *conc;
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (buffer[i] != '\0')
-		i++;
-	while (temp[j] != '\0')
-		j++;
-	conc = ft_calloc((i + j + 1), sizeof(char));
+	int	i;
+	
+	conc = ft_calloc((ft_strlen(buffer) + ft_strlen(temp) + 1), sizeof(char));
 	if (conc == NULL)
 		return (NULL);
 	i = 0;
@@ -32,7 +25,6 @@ char *ft_strjoin(char *buffer, char *temp)
 		conc[i++] = *buffer++;
 	while (*temp != '\0')
 		conc[i++] = *temp++;
-	conc[i] = '\0';
 	return (conc);
 }
  
@@ -98,27 +90,4 @@ char	*ft_strdup(const char *s)
 	}
 	dest[i] = '\0';
 	return (dest);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char				*substring;
-	size_t				s_size;
-	size_t				i;
-
-	s_size = ft_strlen(s);
-	if (!s)
-		return (NULL);
-	if (s_size <= start)
-		return (ft_strdup(""));
-	else if (start + len > s_size)
-		len = s_size - start;
-	substring = (char *)malloc((len + 1) * sizeof(char));
-	if (substring == NULL)
-		return (NULL);
-	i = 0;
-	while (i < len)
-		substring[i++] = s[start++];
-	substring[i] = '\0';
-	return (substring);
 }

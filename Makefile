@@ -3,7 +3,7 @@ NAME_TEST = getnextline_test
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-BUFFER_SIZE = 7
+BUFFER_SIZE = 1
 
 SRC_TEST = get_next_line.c get_next_line_utils.c main.c 
 
@@ -19,5 +19,3 @@ retest: clean test
  
 debug:
 	cc -g get_next_line.c get_next_line_utils.c main.c
-
-	
