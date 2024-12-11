@@ -10,7 +10,8 @@ int main(void)
     int fd;
     char    *str;
 
-    fd = open("image.txt", O_RDONLY);
+    //fd = open("image.txt", O_RDONLY);
+    fd = 1000;
     str = get_next_line(fd);
     while (str != NULL)
     {

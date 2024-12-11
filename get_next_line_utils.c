@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ggoncalv <ggoncalv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ggoncalv <ggoncalv@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:58 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/10 16:17:58 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:42:08 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *ft_strjoin(char *buffer, char *temp)
+char	*ft_strjoin(char *buffer, char *temp)
 {
-	char *conc;
-	int	i;
-	
+	char	*conc;
+	int		i;
+
 	conc = ft_calloc((ft_strlen(buffer) + ft_strlen(temp) + 1), sizeof(char));
 	if (conc == NULL)
 		return (NULL);
@@ -27,7 +27,7 @@ char *ft_strjoin(char *buffer, char *temp)
 		conc[i++] = *temp++;
 	return (conc);
 }
- 
+
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t			i;
@@ -39,7 +39,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	i = 0;
 	while (i < nmemb * size)
 	{
-		temp[i] = 0; //0 e interpretado como \0 em strings
+		temp[i] = 0;
 		i++;
 	}
 	return (temp);
