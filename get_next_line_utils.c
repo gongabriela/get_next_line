@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:18:58 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/11 12:42:08 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2025/01/08 12:24:14 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,20 @@ char	*ft_strjoin(char *buffer, char *temp)
 {
 	char	*conc;
 	int		i;
+	int		j;
 
 	conc = ft_calloc((ft_strlen(buffer) + ft_strlen(temp) + 1), sizeof(char));
 	if (conc == NULL)
 		return (NULL);
 	i = 0;
-	while (*buffer != '\0')
-		conc[i++] = *buffer++;
-	while (*temp != '\0')
-		conc[i++] = *temp++;
+	j = 0;
+	while (buffer[j] != '\0')
+		conc[i++] = buffer[j++];
+	j = 0;
+	while (temp[j] != '\0')
+		conc[i++] = temp[j++];
+	free(buffer);
+	free(temp);
 	return (conc);
 }
 
@@ -79,7 +84,7 @@ char	*ft_strdup(const char *s)
 	i = 0;
 	while (s[i] != '\0')
 		i++;
-	dest = (char *)malloc(sizeof(char) * (i + 1));
+	dest = ft_calloc(i + 1, sizeof(char));
 	if (dest == NULL)
 		return (NULL);
 	i = 0;
@@ -88,6 +93,5 @@ char	*ft_strdup(const char *s)
 		dest[i] = s[i];
 		i++;
 	}
-	dest[i] = '\0';
 	return (dest);
 }

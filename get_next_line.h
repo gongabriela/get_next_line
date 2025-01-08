@@ -6,7 +6,7 @@
 /*   By: ggoncalv <ggoncalv@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:19:15 by ggoncalv          #+#    #+#             */
-/*   Updated: 2024/12/11 12:40:31 by ggoncalv         ###   ########.fr       */
+/*   Updated: 2025/01/08 11:43:29 by ggoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 # include <unistd.h>
 # include <stdlib.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 5
 # endif
 
 char	*get_next_line(int fd);
-char	*read_file(int fd, char *newline);
-char	*set_buffer(char *newline);
-char	*set_line(char *buffer, char **newline);
+char	*read_file(int fd, char *buffer);
+char	*set_line(char *buffer);
+char	*set_nextline(char *buffer, char *line);
 char	*ft_strjoin(char *buffer, char *temp);
 void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strchr(char *s, int c);
